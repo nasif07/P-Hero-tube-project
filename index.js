@@ -44,6 +44,11 @@ const handleLoad = async (categoryID) => {
         <div class="card bg-base-100 shadow-xl">
                 <figure><img class="rounded-lg h-52 w-full" src="${blog.thumbnail}"/></figure>
                 <div>
+                    ${blog.others.posted_date ? `<div class="flex justify-end  text-white -mt-10 mr-2">
+                    <span class="inline-block bg-[#171717] p-1 rounded-md">${parseInt(blog.others.posted_date / 60)} hrs ${parseInt(blog.others.posted_date % 60)} min ago</span>
+                </div>`: ""}
+                </div>
+                <div>
                    <div class="flex mt-4 ml-3 items-center">
                         <img src="${blog.authors[0].profile_picture}" alt="" class="w-10 h-10 rounded-full">
                         <h1 class="ml-3 text-[#171717] font-bold text-lg">${blog.title}</h1>
