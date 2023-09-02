@@ -3,24 +3,18 @@ const handleCategory = async () => {
         "https://openapi.programming-hero.com/api/videos/categories"
     );
     const data = await res.json();
-    // console.log(data.data);
     const tabContainer = document.getElementById("tab-container");
     data.data.forEach(category => {
-        // console.log(category.category);
         const div = document.createElement('div');
         div.innerHTML = `
         <a onclick="handleLoad('${category.category_id}')" class="tab bg-gray-300 rounded">${category.category}</a> 
         `;
         tabContainer.appendChild(div);
-        // console.log(category.category_id);
     });
 }
-
-
 const handleLoad = async (categoryID) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryID}`);
     const data = await res.json();
-    
     if(data.data.length === 0){
         const cardContainer = document.getElementById("card-container");
         cardContainer.innerHTML ="";
@@ -33,11 +27,10 @@ const handleLoad = async (categoryID) => {
     </div>`
     }
     else{
-         // console.log(categoryID);
-    const cardContainer = document.getElementById("card-container");
-    cardContainer.classList.add("grid");
-    cardContainer.innerHTML ="";
-    data.data.forEach(blog => {
+        const cardContainer = document.getElementById("card-container");
+        cardContainer.classList.add("grid");
+        cardContainer.innerHTML ="";
+        data.data.forEach(blog => {
         const div = document.createElement('div');
         // console.log(blog)
         div.innerHTML = `
@@ -77,16 +70,8 @@ const handleLoad = async (categoryID) => {
               </div>
         `;
         cardContainer.appendChild(div);
-        // console.log(blog)
-        
-        
-        
-
     });
-    }
-    
-   
+ }
 }
-
-handleCategory()
+handleCategory();
 handleLoad(1000);
